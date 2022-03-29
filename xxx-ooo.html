@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<title>XXX-OOO Játék</title>
+
+<script type="text/javascript">
+
+	function reset()
+	{
+		document.getElementById("1").innerHTML = "X";
+		document.getElementById("2").innerHTML = "X";
+		document.getElementById("3").innerHTML = "X";
+		document.getElementById("4").innerHTML =  "";
+		document.getElementById("5").innerHTML = "O";
+		document.getElementById("6").innerHTML = "O";
+		document.getElementById("7").innerHTML = "O";
+	}	
+
+	function katt(cicmok)
+	{
+		if  (document.getElementById(cicmok).innerHTML == "O") 
+
+		{
+			if (document.getElementById(cicmok-1).innerHTML == "") 
+			{  
+				document.getElementById(cicmok).innerHTML = "";
+				document.getElementById(cicmok-1).innerHTML = "O";
+			}
+			else if (document.getElementById(cicmok-1).innerHTML == "X" && document.getElementById(cicmok-2).innerHTML == "")
+			{ 
+				document.getElementById(cicmok-2).innerHTML = "O";
+				document.getElementById(cicmok).innerHTML = "";
+			}
+				
+		}
+		else if (document.getElementById(cicmok).innerHTML == "X") 
+		
+		{
+			if (document.getElementById(cicmok+1).innerHTML == "")
+			{ 
+				document.getElementById(cicmok).innerHTML = "";
+				document.getElementById(cicmok+1).innerHTML = "X";
+			}
+			else if (document.getElementById(cicmok+1).innerHTML == "O" && document.getElementById(cicmok+2).innerHTML == "")
+			{
+				document.getElementById(cicmok+2).innerHTML = "X";
+				document.getElementById(cicmok).innerHTML = "";
+			}
+		}
+
+		if (document.getElementById(1).innerHTML == "O" && 
+			document.getElementById(2).innerHTML == "O" && 
+			document.getElementById(3).innerHTML == "O" && 
+			document.getElementById(5).innerHTML == "X" && 
+			document.getElementById(6).innerHTML == "X" && 
+			document.getElementById(7).innerHTML == "X")
+		{
+			
+			setTimeout(function(){ alert("Ügyees ! :)"); }, 1000); //1 mp késleltetéssel
+
+		}
+	}
+	
+
+
+</script>
+
+</head>
+<body align="center">
+	<p style="font-size: 1.2rem; font-family: serif; ">A játékszabályok: 
+		Cseréld meg az XXX-OOO állást OOO-XXX-re úgy, hogy az X-el csak jobbra, az O-val csak balra haladhatsz mindig egyet ÉS csak egy <b>ellenkező</b> karaktert ugorhatsz át.</p>
+
+<button style="width: 50px; height: 50px;" class="gomb" onclick="katt(1)" id="1">X</button>
+<button style="width: 50px; height: 50px;" class="gomb" onclick="katt(2)" id="2">X</button>
+<button style="width: 50px; height: 50px;" class="gomb" onclick="katt(3)" id="3">X</button>
+<button style="width: 50px; height: 50px;" class="gomb" onclick="katt(4)" id="4"></button>
+<button style="width: 50px; height: 50px;" class="gomb" onclick="katt(5)" id="5">O</button>
+<button style="width: 50px; height: 50px;" class="gomb" onclick="katt(6)" id="6">O</button>
+<button style="width: 50px; height: 50px;" class="gomb" onclick="katt(7)" id="7">O</button>
+<!-- ezzel a sok style-al rohadtul undin néz ki na mindegy.. !-->
+<br>
+<br>
+<button onclick="reset()">Újra!</button>
+</body>
+</html>
